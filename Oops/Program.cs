@@ -6,7 +6,7 @@ namespace OOPSPrograms
     class Program
     {
         static string inventoryFilePath = @"C:\Users\Basha\Documents\DotNet\PracticePrograms\OopsConcept\Oops\InventoryManagement\Inventory.json";
-        static string JsonDataFilePath = @"C:\Users\Basha\Documents\DotNet\PracticePrograms\OopsConcept\Oops\InventoryDataManagement\InventoryData.Json";
+        static string inventoryDataFilePath = @"C:\Users\Basha\Documents\DotNet\PracticePrograms\OopsConcept\Oops\InventoryDataManagement\InventoryData.Json";
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to the OOPS Programs");
@@ -18,7 +18,8 @@ namespace OOPSPrograms
                 Console.WriteLine("1.InventoryManagement " + "\n" +
                                   "2.InventoryDataManagement" + "\n" +
                                   "3.AddInventoryData"+"\n" +
-                                  "4.Exit" + "\n");
+                                  "4.DeleteInventoryData"+"\n"+
+                                  "5.Exit" + "\n");
                
                 {
                     int choice = Convert.ToInt32(Console.ReadLine());
@@ -30,15 +31,19 @@ namespace OOPSPrograms
                             break;
                         case 2:
                             InventoryManagement inventoryManagement = new InventoryManagement();
-                            inventoryManagement.ReadJSONFile(JsonDataFilePath);
+                            inventoryManagement.ReadJSONFile(inventoryDataFilePath);
                             break;
                         case 3:
                             InventoryManagement inventoryManagement1 = new InventoryManagement();
-                            inventoryManagement1.ReadJSONFile(JsonDataFilePath);
+                            inventoryManagement1.ReadJSONFile(inventoryDataFilePath);
                             inventoryManagement1.AddInventoryDetails("Rice");
-                            inventoryManagement1.WriteToJson(JsonDataFilePath);
+                            inventoryManagement1.WriteToJson(inventoryDataFilePath);
                             break;
                         case 4:
+                            InventoryManagement inventoryManagement2 = new InventoryManagement();
+                            inventoryManagement2.EditInventoryData();
+                            break;
+                        case 5:
                             flag = false;
                             break;
 
