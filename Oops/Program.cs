@@ -28,8 +28,8 @@ namespace OOPSPrograms
                             inventoryDetailsManagement.ReadJSonFile(InventoryFilePath);
                             break;
                         case 2:
-                            InventoryManager inventoryManager = new InventoryManager();
-                            inventoryManager.ReadJSONFile(jsonDataFilePath);
+                            InventoryManagement inventoryManagement = new InventoryManagement();
+                            inventoryManagement.ReadJSONFile(jsonDataFilePath);
                             break;
                         case 3:
                             flag = false;
