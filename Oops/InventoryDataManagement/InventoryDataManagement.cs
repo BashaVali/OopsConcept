@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Oops.InventoryDataManagement
 {
-   
-     class InventoryManagement
-     {
+
+    class InventoryManagement
+    {
         List<Inventory> RiceList;
         List<Inventory> WheatList;
         List<Inventory> PulsesList;
@@ -20,14 +20,14 @@ namespace Oops.InventoryDataManagement
         {
             var json = File.ReadAllText(file);
             InventoryData inventories = JsonConvert.DeserializeObject<InventoryData>(json);
-           RiceList = inventories.Rice;
-           
+            RiceList = inventories.Rice;
+
             Display(RiceList);
             WheatList = inventories.Wheat;
-           
+
             Display(WheatList);
             PulsesList = inventories.Pulses;
-           
+
             Display(PulsesList);
         }
         public void Display(List<Inventory> inventories)
@@ -50,8 +50,7 @@ namespace Oops.InventoryDataManagement
                 RiceList.Add(inventory);
             }
 
-
-        }  
+        }
         public void WriteToJson(string filePath)
         {
             var json = JsonConvert.SerializeObject(inventories);
@@ -145,11 +144,58 @@ namespace Oops.InventoryDataManagement
                     }
                 }
             }
-            else
-                Console.WriteLine("Invalid Data");
+        }
+        public void DeleteInventoryData()
+        {
+            Console.WriteLine("Enter  data you want to delete");
+            string deleteinventory = Console.ReadLine();
+            if (deleteinventory.Equals("Rice"))
+            {
+                Console.WriteLine("Enter which data you want to delete");
+                string deleterice = Console.ReadLine();
+                Inventory deletedata = new Inventory();
+                foreach (var delete in RiceList)
+                {
+                    if (delete.Name.Equals(deleterice))
+                    {
+                        deletedata = delete;
+                    }
+                }
+                RiceList.Remove(deletedata);
+            }
+            else if (deleteinventory.Equals("Wheat"))
+            {
+                Console.WriteLine("Enter which data you want to delete");
+                string deletewheat = Console.ReadLine();
+                Inventory deletedata = new Inventory();
+                foreach (var delete in WheatList)
+                {
+                    if (delete.Name.Equals(deletewheat))
+                    {
+                        deletedata = delete;
+                    }
+                }
+                WheatList.Remove(deletedata);
+            }
+            else if (deleteinventory.Equals("Pulses"))
+            {
+                Console.WriteLine("Enter which data you want to delete");
+                string deletepulses = Console.ReadLine();
+                Inventory deletedata = new Inventory();
+                foreach (var delete in PulsesList)
+                {
+                    if (delete.Name.Equals(deletepulses))
+                    {
+                        deletedata = delete;
+                    }
+                }
+                PulsesList.Remove(deletedata);
+            }
         }
     }
 }
-    
+
+
+
 
 
